@@ -11,7 +11,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "head_professor")
+@Table(name = "head_program")
 @Getter
 @Setter
 public class HeadProgram {

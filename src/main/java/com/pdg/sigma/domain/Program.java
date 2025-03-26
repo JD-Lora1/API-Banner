@@ -11,7 +11,7 @@ public class Program {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private int id;
 
     @Column(name = "name", nullable = false, columnDefinition = "varchar(100)")
     private String name;
