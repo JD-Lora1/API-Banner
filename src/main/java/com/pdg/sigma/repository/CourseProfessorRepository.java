@@ -1,16 +1,23 @@
 package com.pdg.sigma.repository;
 
-import com.pdg.sigma.domain.CourseProfessor;
-import com.pdg.sigma.domain.Professor;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-import java.util.Optional;
+import com.pdg.sigma.domain.CourseProfessor;
+import com.pdg.sigma.domain.Professor;
 
 @Repository
 public interface CourseProfessorRepository extends JpaRepository<CourseProfessor, Integer> {
 
+    @Query("SELECT cp FROM CourseProfessor cp WHERE cp.professor.id = :professorId")
+    List<CourseProfessor> findByProfessor(@Param("professorId") String professorId);
 
-    List<CourseProfessor> findByProfessor(Professor professor);
+    List<CourseProfessor> findByCourseId(Long courseId);
+
+    @Query("SELECT cp.professor FROM CourseProfessor cp WHERE cp.course.id IN :courseId")
+    List<Professor> findProfessorsByCourseId(@Param("courseId") List<Long> courseId);
 }
