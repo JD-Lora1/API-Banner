@@ -2,7 +2,6 @@
 FROM eclipse-temurin:21-jdk as build
 WORKDIR /app
 
-# Copia todo el código fuente
 COPY . .
 
 # Da permisos de ejecución al wrapper de Maven
